@@ -1,10 +1,13 @@
 <template>
-  <Headings size="h2">Abilities</Headings>
-  <PokemonAbilityWrapper
-    v-for="ability in mappedAbilities"
-    v-bind:key="ability.name"
-    v-bind:ability="ability"
-  />
+  <Headings size="h5" class="uppercase mt-4">abilities</Headings>
+
+  <div class="flex justify-center wrap gap-2">
+    <PokemonAbilityWrapper
+      v-for="ability in mappedAbilities"
+      v-bind:key="ability.name"
+      v-bind:ability="ability"
+    />
+  </div>
 </template>
 
 <script setup>

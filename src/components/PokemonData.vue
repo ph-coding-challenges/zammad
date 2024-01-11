@@ -1,14 +1,19 @@
 <template>
-  <Headings size="h2">data</Headings>
-  <p>{{ pokemonInfo.base_experience }}</p>
-  <p>{{ pokemonInfo.height }}</p>
-  <p>{{ pokemonInfo.weight }}</p>
+  <div class="flex justify-center wrap gap-2 mt-4">
+    <PokemonDataWrapper
+      v-bind:data="pokemonInfo.base_experience"
+      title="base exp"
+    />
+
+    <PokemonDataWrapper v-bind:data="pokemonInfo.height" title="height" />
+    <PokemonDataWrapper v-bind:data="pokemonInfo.weight" title="weight" />
+  </div>
 </template>
 
 <script setup>
 import { computed, defineProps } from 'vue'
 
-import Headings from './ui/Headings.vue'
+import PokemonDataWrapper from './PokemonDataWrapper.vue'
 
 const props = defineProps({
   data: Object,

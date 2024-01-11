@@ -3,7 +3,7 @@
     v-bind:is="props.size"
     v-bind:class="`${
       FONT_SIZE_DICTIONARY[props.size]
-    } text-green-200 bg-red-200`"
+    } text-zinc-800 font-bold my-2`"
   >
     <slot />
   </component>

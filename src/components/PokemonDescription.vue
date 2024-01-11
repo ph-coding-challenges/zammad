@@ -1,20 +1,30 @@
 <template>
-  <img v-bind:src="props.img.front_default" alt="" />
-  <p>#{{ id }}</p>
-  <Headings class="capitalize">{{ pokemonName }}</Headings>
+  <div class="relative">
+    <button
+      class="absolute right-0 top-0 w-6 h-6 rounded-full hover:bg-gray-200"
+      v-on:click.prevent="router.push({ name: 'pokemon:list' })"
+    >
+      X
+    </button>
 
-  <h3 v-if="isFetching">... loading</h3>
-  <h3 v-else>{{ pokemonDescription }}</h3>
+    <img v-bind:src="props.img.front_default" class="w-[200px] mx-auto" />
+    <p class="font-bold text-lg text-gray-600 -mb-4">#{{ id }}</p>
+    <Headings class="capitalize">{{ pokemonName }}</Headings>
+
+    <Loader v-if="isFetching" />
+    <h3 v-else>{{ pokemonDescription }}</h3>
+  </div>
 </template>
 
 <script setup>
 import { computed, defineProps } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 import API from '../api/pokemon.api'
 import { useFetchJson } from '../composables/fetch-composable'
 
 import Headings from './ui/Headings.vue'
+import Loader from './ui/Loader.vue'
 
 const props = defineProps({
   id: Number,
@@ -22,6 +32,7 @@ const props = defineProps({
 })
 
 const route = useRoute()
+const router = useRouter()
 
 const { data, isFetching } = useFetchJson(
   API.GET_POKEMON_DESCRIPTION(props.id),

@@ -1,10 +1,13 @@
 <template>
-  <Headings size="h2">stats</Headings>
-  <PokemonStatWrapper
-    v-for="stat in mappedStats"
-    v-bind:key="stat.name"
-    v-bind:stat="stat"
-  />
+  <Headings size="h5" class="uppercase mt-6">stats</Headings>
+
+  <div class="flex justify-center gap-4">
+    <PokemonStatWrapper
+      v-for="stat in mappedStats"
+      v-bind:key="stat.name"
+      v-bind:stat="stat"
+    />
+  </div>
 </template>
 
 <script setup>

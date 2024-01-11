@@ -30,7 +30,7 @@
       </div>
     </div>
   </nav>
-  <main class="flex justify-center">
+  <main class="flex-grow overflow-auto">
     <router-view />
   </main>
 </template>
