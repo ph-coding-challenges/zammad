@@ -35,7 +35,7 @@ const pokemonDescription = computed(() => {
     (d) => d.language.name === 'en',
   )
 
-  if (englishEntries.length) {
+  if (englishEntries?.length) {
     const random = Math.floor(Math.random() * englishEntries.length)
     return englishEntries[random].flavor_text
   }
