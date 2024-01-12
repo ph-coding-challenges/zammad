@@ -1,5 +1,4 @@
 import { describe, it, expect } from 'vitest'
-import { ref } from 'vue'
 import { useToasty } from './toasty-composable'
 
 describe('useToasty composable', () => {
