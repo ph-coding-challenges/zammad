@@ -16,14 +16,4 @@ const props = defineProps({
   data: [String, Number],
   title: String,
 })
-
-// const isHidden = computed(() => props.ability?.is_hidden)
-// const name = computed(() => {
-//   if (!props.ability?.name) return ''
-
-//   return props.ability.name
-//     .split('-')
-//     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-//     .join(' ')
-// })
 </script>
