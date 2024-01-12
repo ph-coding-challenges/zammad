@@ -1,4 +1,7 @@
 import { onMounted, ref } from 'vue'
+import { useToasty } from './toasty-composable'
+
+const { showToasty } = useToasty()
 
 function useCustomFetch(initialUrl, options = {}) {
   const {
@@ -36,7 +39,23 @@ function useCustomFetch(initialUrl, options = {}) {
 
       data.value = await response.json()
     } catch (err) {
+      const ERRORS_DICTIONARY = {
+        400: 'Bad request. Please check your request and try again.',
+        401: 'Unauthorized. Please log in and try again.',
+        404: 'Not found. The requested resource could not be found.',
+        500: 'Internal server error. Something went wrong on our end.',
+        503: 'Service unavailable. The server is currently unable to handle the request.',
+        504: 'Gateway timeout. The server took too long to respond.',
+      }
+
       error.value = err
+
+      showToasty(
+        `[${err.status}] ${
+          err.statusText ? err.statusText : ERRORS_DICTIONARY[err.status]
+        }`,
+        'error',
+      )
     } finally {
       isFetching.value = false
     }
