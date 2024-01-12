@@ -1,4 +1,5 @@
 <template>
+  <Toasty />
   <nav class="bg-gray-800 text-white">
     <div class="mx-auto px-8">
       <div class="relative flex items-center justify-between h-16">
@@ -35,4 +36,6 @@
   </main>
 </template>
 
-<script setup></script>
+<script setup>
+import Toasty from '../ui/Toasty.vue'
+</script>
